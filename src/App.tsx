@@ -6,7 +6,7 @@ import "./App.scss";
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(205);
+  const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
   const audio = useMemo(
@@ -59,37 +59,44 @@ function App() {
   }
 
   return (
-    <>
-      {/* <audio
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "4rem",
+        width: "400px",
+      }}
+    >
+      <audio
         controls
         src="https://cdn.filestackcontent.com/KLzt2ynvSGRc9JsQ5dwA"
-      /> */}
-      <div style={{ width: "400px" }}>
-        <div className="audio-player">
-          <button
-            className="play-pause"
-            onClick={() => {
-              audio.currentTime = currentTime;
-              setIsPlaying(!isPlaying);
-            }}
-          >
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
-          <input
-            type="range"
-            value={currentTime}
-            min={0}
-            max={duration}
-            onChange={handleSliderChange}
-          />
-          <div className="duration">
-            <p>{formatTime(currentTime)}</p>
-            <p>-</p>
-            <p>{formatTime(duration)}</p>
-          </div>
+      />
+
+      <div className="audio-player">
+        <button
+          className="play-pause"
+          onClick={() => {
+            audio.currentTime = currentTime;
+            setIsPlaying(!isPlaying);
+          }}
+        >
+          {isPlaying ? <FaPause /> : <FaPlay />}
+        </button>
+        <input
+          type="range"
+          value={currentTime}
+          min={0}
+          max={duration}
+          onChange={handleSliderChange}
+        />
+        <div className="duration">
+          <p>{formatTime(currentTime)}</p>
+          <p>-</p>
+          <p>{formatTime(duration)}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  background-color: #777777ff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,4 +16,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
